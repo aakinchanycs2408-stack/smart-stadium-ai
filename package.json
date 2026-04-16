@@ -1,9 +1,0 @@
-{
-  "name": "smart-stadium-vercel",
-  "version": "1.0.0",
-  "description": "Smart Stadium AI Project on Vercel",
-  "scripts": {
-    "start": "npx vercel dev"
-  },
-  "dependencies": {}
-}

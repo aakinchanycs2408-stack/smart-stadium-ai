@@ -92,7 +92,19 @@
         .animate-dash {
             animation: dash-move 1s linear infinite;
         }
-    </style>
+    
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        .animate-shimmer {
+            background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+            background-size: 1000px 100%;
+            animation: shimmer 2.5s infinite linear;
+        }
+        button { transition: transform 0.15s ease-in-out, background-color 0.2s ease-in-out !important; }
+        button:active { transform: scale(0.95) !important; }
+</style>
 </head>
 <body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
 <!-- TopNavBar -->
@@ -100,9 +112,9 @@
 <div class="text-xl font-bold tracking-tighter text-zinc-900 dark:text-white">Smart Stadium AI</div>
 <div class="hidden xl:flex items-center gap-8">
 <a class="text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-600 pb-1 font-medium text-sm font-label uppercase tracking-wide" href="#">Dashboard</a>
-<a class="text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 transition-all duration-300 font-medium text-sm font-label uppercase tracking-wide" href="#">Heatmaps</a>
-<a class="text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 transition-all duration-300 font-medium text-sm font-label uppercase tracking-wide" href="#">Zones</a>
-<a class="text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 transition-all duration-300 font-medium text-sm font-label uppercase tracking-wide" href="#">Security</a>
+
+
+
 </div>
 <div class="hidden md:flex items-center gap-4 bg-zinc-100/80 px-4 py-1.5 rounded-full border border-zinc-200">
 <span class="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-emerald-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Live Status</span>
@@ -112,27 +124,26 @@
 <span id="data-sync-ind" class="flex items-center gap-1.5 text-[10px] font-bold tracking-widest uppercase text-zinc-500 transition-colors"><span class="material-symbols-outlined text-[12px]">sync</span>Syncing Data</span>
 </div>
 <div class="flex items-center gap-4">
-<button class="p-2 rounded-full hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 transition-all duration-300">
-<span class="material-symbols-outlined text-zinc-600" data-icon="notifications">notifications</span>
-</button>
-<button class="p-2 rounded-full hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 transition-all duration-300">
-<span class="material-symbols-outlined text-zinc-600" data-icon="settings">settings</span>
-</button>
+
+
 <img alt="Admin Profile" class="w-8 h-8 rounded-full object-cover" data-alt="professional headshot of a stadium administrator in a modern office setting with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4H_FVmcW66NUdzuG6XaaTuuHujklo7fmVwSPmdUtfdWlIHmDzMVdxTMTiHsAkqmJbv76hBoG_AVZ6KcMrHrjdrdCf4Z4kiK6rUEvG0cAqCU-WReHr3VAyMQXztijw1EIJoDuX_DF2v4eytb9ALZeYPgB3J3k20FRjvLBqPZMqztip6baTnhm4VFwxRk15exy8qVb6lIMovXdRiwY65OGwisq1pZvTWC7zCojT7yd3lnNlLLYfiE462ESGZMQ3mCwqpeEP1VcXBZg"/>
 </div>
 </nav>
 <!-- Hero Section -->
-<section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<section class="relative min-h-screen w-full flex items-center justify-center overflow-hidden py-24">
 <div class="absolute inset-0 z-0">
 <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 via-background to-secondary/10"></div>
 <img alt="Stadium Texture" class="w-full h-full object-cover opacity-20 mix-blend-overlay" data-alt="extreme close up of lush green stadium grass with floodlight reflections and subtle geometric patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH2pNwjpoU6h8M0sBqpW7V2CfvVrE6NiyJpXcanYLHkg_Qe6ypdxPITjY4rVtiXnn1rzQVOeOz8SmgoBaEiXRJh2DkOODMGiw34nNkoYOF7-2TprrQJEohlKjgi8qcDGEs4Qt-s82F2Ke7yZCmgeRDk3shQT7bxkKYCGeoz2APIzBU2wfjGtRTJR4kA3djQUW7SswIkwYUam3KUM2vFk29s-F0x9iCdSO3xpg_0Q0C6hoUOczmSgzD7LsFsARWI3plCUg26w-JmDE"/>
 </div>
 <div class="relative z-10 text-center px-4 max-w-4xl mt-12">
 <span class="inline-block px-4 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label text-xs font-bold tracking-widest uppercase mb-4 shadow-sm border border-primary/20">Live AI Simulation based on real stadium behavior patterns</span>
-<h1 class="text-6xl md:text-8xl font-black tracking-tighter text-on-surface mb-6 leading-none">Smart Stadium AI</h1>
+<h1 class="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-on-surface mb-6 leading-tight">
+    Smart Stadium <br/>
+    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">AI Simulation</span>
+</h1>
 <p class="text-xl md:text-2xl text-on-surface-variant font-body mb-6 max-w-2xl mx-auto">
-            Navigate <span class="font-bold text-primary">130,000+</span> crowd in real-time with predictive intelligence and hyper-precise pathfinding.
-        </p>
+    Real-time visualization of crowd density algorithms, predictive analytics, and deterministic intelligence routing.
+</p>
 <div class="bg-white/40 backdrop-blur-md border border-white/50 rounded-2xl p-4 max-w-xl mx-auto mb-10 shadow-lg inline-flex items-center gap-4 text-left">
 <div class="shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
 <span class="material-symbols-outlined text-primary">info</span>
@@ -380,29 +391,22 @@
                     <feComposite in="SourceGraphic" in2="blur" operator="over" />
                 </filter>
                 <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                    <polyline points="1,1 5,3 1,5" stroke="#2563eb" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polyline id="arrowhead-path" points="1,1 5,3 1,5" stroke="#2563eb" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </marker>
             </defs>
             
             <!-- Glow background line -->
-            <path d="M 160 280 Q 200 350 350 350 T 520 210" fill="none" stroke="#60a5fa" stroke-width="6" stroke-linecap="round" filter="url(#glow-route)" class="opacity-50" />
+            <path id="route-glow" d="" fill="none" stroke="#60a5fa" stroke-width="6" stroke-linecap="round" filter="url(#glow-route)" class="opacity-50 transition-all duration-1000" />
             
             <!-- Animated dashed line for flow direction -->
-            <path d="M 160 280 Q 200 350 350 350 T 520 210" class="animate-dash" fill="none" stroke="#1d4ed8" stroke-width="2.5" stroke-dasharray="8 6" stroke-linecap="round" marker-end="url(#arrowhead)"/>
+            <path id="route-dash" d="" class="animate-dash transition-all duration-1000" fill="none" stroke="#1d4ed8" stroke-width="2.5" stroke-dasharray="8 6" stroke-linecap="round" marker-end="url(#arrowhead)"/>
         </svg>
 
     </div>
 
     <!-- 3D UI Overlay -->
 <div class="absolute bottom-8 left-8 right-8 flex justify-between items-end pointer-events-none">
-<div class="glass-card p-4 rounded-2xl border border-outline-variant/20 pointer-events-auto">
-<div class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-3">Map Controls</div>
-<div class="flex gap-2">
-<button class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined" data-icon="rotate_left">rotate_left</span></button>
-<button class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined" data-icon="zoom_in">zoom_in</span></button>
-<button class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined" data-icon="layers">layers</span></button>
-</div>
-</div>
+
 <div class="text-right">
 <div class="text-xs font-bold text-on-surface-variant uppercase mb-1">Rendering Engine</div>
 <div class="text-sm font-black text-primary">Narendra Modi Stadium Digital Twin v4.2</div>
@@ -449,7 +453,7 @@
 <span class="material-symbols-outlined absolute -right-4 -bottom-4 text-white/10 text-9xl" data-icon="hub">hub</span>
 <h4 class="text-lg font-bold mb-2">AI Insights</h4>
 <p class="text-white/80 text-sm leading-relaxed mb-6">Detecting bottleneck at Gate 3. Gemini recommending rerouting South-West spectators to the Peripheral Concourse.</p>
-<button class="w-full py-3 bg-white/20 backdrop-blur-md rounded-xl font-bold text-sm hover:bg-white/30 transition-all">Execute Reroute</button>
+
 </div>
 <!-- Predictive Intelligence Panel (Req #5) -->
 <div class="glass-card p-6 rounded-[2rem] border border-outline-variant/20 shadow-sm relative overflow-hidden bg-white/50">
@@ -457,7 +461,7 @@
 <h4 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-4 pl-2 flex items-center justify-between">
     AI Prediction <span class="flex h-2 w-2 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span></span>
 </h4>
-<div class="space-y-4 pl-2">
+<div class="space-y-4 pl-2" id="ai-prediction-panel-content">
     <div class="p-3 bg-orange-50/50 rounded-xl border border-orange-100/50">
         <p class="text-xs font-bold text-orange-800 mb-1">South Stand Congestion</p>
         <p class="text-[10px] text-orange-600/80">Expected to reach critical capacity in 10 mins due to Zone B exit flow.</p>
@@ -487,13 +491,13 @@
 <div class="space-y-4">
 <div class="relative">
 <label class="block text-xs font-bold text-on-surface-variant uppercase mb-2 px-1">Start Location</label>
-<button class="w-full flex items-center justify-between p-4 bg-surface-container rounded-xl text-left hover:bg-surface-container-high transition-colors">
+<div class="w-full flex items-center justify-between p-4 bg-surface-container rounded-xl text-left hover:bg-surface-container-high transition-colors pointer-events-none">
 <span class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary" data-icon="my_location">my_location</span>
 <span class="font-medium">Detect My Location</span>
 </span>
 <span class="text-xs bg-primary-fixed text-on-primary-fixed-variant px-2 py-1 rounded font-bold">GPS ACTIVE</span>
-</button>
+</div>
 </div>
 <div class="relative">
 <label class="block text-xs font-bold text-on-surface-variant uppercase mb-2 px-1">Destination</label>
@@ -521,55 +525,35 @@
 </div>
 </div>
 </div>
-<!-- Right: AI Chat Interface -->
-<div class="flex flex-col h-[600px] glass-card rounded-[2rem] border border-outline-variant/15 overflow-hidden shadow-sm">
-<div class="p-6 bg-surface-container-high/50 border-b border-outline-variant/10 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-secondary to-primary-container flex items-center justify-center text-white shadow-md">
-<span class="material-symbols-outlined text-2xl" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
-</div>
-<div>
-<div class="font-bold">Gemini Assistant</div>
-<div class="text-[10px] text-emerald-600 font-bold uppercase">System Connected</div>
-</div>
-</div>
-<button class="p-2 rounded-full hover:bg-white/50"><span class="material-symbols-outlined" data-icon="more_vert">more_vert</span></button>
-</div>
-<div class="flex-1 p-6 space-y-6 overflow-y-auto">
-<!-- Message User -->
-<div class="flex justify-end">
-<div class="bg-primary-container text-on-primary-container p-4 rounded-2xl rounded-tr-none max-w-[80%] text-sm font-medium">
-                            What's the best exit for Block B spectators right now?
-                        </div>
-</div>
-<!-- Message AI -->
-<div class="flex justify-start">
-<div class="bg-surface-container text-on-surface p-4 rounded-2xl rounded-tl-none max-w-[80%] text-sm leading-relaxed">
-<p class="mb-2">Analysis complete. Based on real-time flow:</p>
-<ul class="list-disc ml-4 space-y-1 mb-3">
-<li><strong>Gate 3</strong> is 50% less crowded than your current exit.</li>
-<li><strong>Time Saved:</strong> 12 minutes.</li>
-<li><strong>Condition:</strong> Level 1 concourse is clear.</li>
-</ul>
-<div class="bg-white/50 p-3 rounded-lg border border-outline-variant/10">
-<div class="text-[10px] font-bold text-on-surface-variant uppercase mb-1">AI Recommendation</div>
-<p class="text-xs">Take the Level 1 South elevator to bypass the main stairs congestion.</p>
-</div>
-</div>
-</div>
-<!-- Message AI Status -->
-<div class="flex justify-center">
-<span class="text-[10px] font-bold text-outline uppercase tracking-widest px-4 py-1 bg-surface-container-low rounded-full">Gemini is typing...</span>
-</div>
-</div>
-<div class="p-6 bg-surface-container-low border-t border-outline-variant/10">
-<div class="relative">
-<input id="chat-input" class="w-full p-4 bg-surface-container-lowest border-none rounded-xl pr-12 focus:ring-2 focus:ring-primary/20 font-medium" placeholder="Ask Gemini stadium questions..." type="text"/>
-<button id="chat-send-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-primary">
-<span class="material-symbols-outlined" pointer-events="none" data-icon="send">send</span>
-</button>
-</div>
-</div>
+<!-- Right: Deterministic AI Engine UI -->
+<div class="flex flex-col h-[600px] glass-card rounded-[2rem] border border-outline-variant/15 overflow-hidden shadow-sm relative">
+    <div class="p-6 bg-surface-container-high/50 border-b border-outline-variant/10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-secondary to-primary-container flex items-center justify-center text-white shadow-md">
+                <span class="material-symbols-outlined text-2xl" data-icon="memory">memory</span>
+            </div>
+            <div>
+                <div class="font-bold">AI Decision Engine</div>
+                <div class="text-[10px] text-emerald-600 font-bold uppercase">Simulation Active</div>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-outline">Explanation Mode</span>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" id="explain-toggle" class="sr-only peer">
+              <div class="w-9 h-5 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+            </label>
+        </div>
+    </div>
+    
+    <div id="ai-engine-output" class="flex-1 p-6 space-y-6 overflow-y-auto bg-surface-container-lowest/50">
+        <!-- Initial Blank State -->
+        <div class="h-full flex flex-col items-center justify-center text-center opacity-50">
+            <span class="material-symbols-outlined text-6xl text-outline mb-4">account_tree</span>
+            <h3 class="font-bold text-lg mb-2">Engine Idle</h3>
+            <p class="text-sm max-w-xs">Select a destination and click "Calculate Fastest Path" to initiate the offline prediction algorithms.</p>
+        </div>
+    </div>
 </div>
 </div>
 </div>
@@ -671,10 +655,11 @@
 <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_120%,#186a22,transparent)]"></div>
 <div class="max-w-7xl mx-auto relative z-10 text-center">
 <h2 class="text-3xl font-black mb-12">Simulation Controls</h2>
-<div class="inline-flex flex-wrap justify-center p-2 bg-white/5 backdrop-blur-xl rounded-2xl gap-2 mb-8">
-<button class="px-8 py-3 rounded-xl font-bold bg-white/10 hover:bg-white/20 transition-all">Before Match</button>
-<button class="px-8 py-3 rounded-xl font-bold bg-primary shadow-lg shadow-primary/20 scale-105">During Match</button>
-<button class="px-8 py-3 rounded-xl font-bold bg-white/10 hover:bg-white/20 transition-all">Exit Rush</button>
+<div class="inline-flex flex-wrap justify-center p-2 bg-white/5 backdrop-blur-xl rounded-2xl gap-2 mb-8" id="scenario-controls">
+<button class="scenario-btn px-8 py-3 rounded-xl font-bold bg-white/10 hover:bg-white/20 transition-all" data-scenario="before">Before Match</button>
+<button class="scenario-btn px-8 py-3 rounded-xl font-bold bg-primary shadow-lg shadow-primary/20 scale-105" data-scenario="during">During Match</button>
+<button class="scenario-btn px-8 py-3 rounded-xl font-bold bg-white/10 hover:bg-white/20 transition-all" data-scenario="exit">Exit Rush</button>
+<button class="scenario-btn px-8 py-3 rounded-xl font-bold bg-red-600/80 hover:bg-red-600 shadow-lg shadow-red-500/20 text-white transition-all border border-red-500" data-scenario="emergency">Emergency Simulation</button>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 max-w-4xl mx-auto">
     <div class="p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
@@ -761,197 +746,124 @@
 // Frontend API Integration Logic -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // 0. Prototype Button Visual Feedback
-    document.querySelectorAll('button').forEach(btn => {
-        if (btn.id !== 'chat-send-btn' && !btn.textContent.includes('CALCULATE') && !btn.textContent.includes('Explore Live Stadium')) {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('Smart Stadium UI: This specific button is a frontend placeholder prototype. Only the "Calculate Fastest Path" and "Gemini Chat" features are wired to the live backend currently!');
-            });
+    
         }
     });
 
-    // 1. Route Calculation wiring
-    const calculateBtn = Array.from(document.querySelectorAll('button')).find(btn => btn.textContent.includes('CALCULATE FASTEST'));
-    
-    if (calculateBtn) {
-        calculateBtn.addEventListener('click', async () => {
-            const originalText = calculateBtn.textContent;
-            calculateBtn.textContent = "Analyzing crowd data...";
-            calculateBtn.disabled = true;
+    // 1. Centralized Offline State
+    const simulationState = {
+        scenario: 'during', // Default
+        metrics: { southStand: 94, eastStand: 68, northStand: 32, westStand: 20, gate3: 85, gate1: 40 }
+    };
 
-            try {
-                // Artificial multi-stage calculation logic
-                await new Promise(r => setTimeout(r, 800));
-                calculateBtn.textContent = "Calculating best route...";
-                await new Promise(r => setTimeout(r, 1200));
+    const mapPaths = {
+        "Main Exit - Gate 3": "M 160 280 Q 200 350 350 350 T 520 210",
+        "Food Court A": "M 160 280 Q 180 200 130 130",
+        "Washrooms - Level 2": "M 160 280 Q 250 250 210 130",
+        "Emergency Exit S12": "M 160 280 Q 120 280 80 320"
+    };
 
-                // Prepare mock coords payload for ORS as requested
-                const payload = {
-                    fromCoords: { lat: 23.0925, lng: 72.5970 },
-                    toCoords: { lat: 23.0930, lng: 72.5980 }
-                };
-
-                const response = await fetch('/api/route', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const data = await response.json();
-                
-                if (response.ok) {
-                    console.log('Route API Success:', data);
-                    // Update DOM routing section
-                    const routeOptimizedContainer = document.querySelector('.border-l-4.border-primary h4').parentElement;
-                    if (routeOptimizedContainer) {
-                        const pDesc = routeOptimizedContainer.querySelector('p');
-                        if (pDesc) {
-                            pDesc.innerHTML = `We've found a route. Distance: <span class="text-primary font-bold">${data.distance} km</span>. Time saved: <span class="text-primary font-bold">${data.timeSaved || data.eta}</span>.`;
-                        }
-                    }
-                    alert(`Route optimized! ETA: ${data.eta}\\nDistance: ${data.distance} km`);
-                } else {
-                    console.error('Route API Error:', data);
-                    alert(`Routing Error: ${data.error}`);
-                }
-            } catch (err) {
-                console.error('Fetch Error:', err);
-                alert('Connection to backend failed. Is the server running?');
-            } finally {
-                calculateBtn.textContent = originalText;
-                calculateBtn.disabled = false;
-            }
-        });
-    }
-
-    // 2. AI Chat Integration
-    const chatInput = document.getElementById('chat-input');
-    const sendBtn = document.getElementById('chat-send-btn');
-
-    if (chatInput && sendBtn) {
-        sendBtn.addEventListener('click', handleChatSubmit);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleChatSubmit();
-        });
-
-        async function handleChatSubmit(e) {
-            if (e) e.preventDefault();
-            const query = chatInput.value.trim();
-            if (!query) return;
-
-            // Clear input and show visual state wrapper
-            chatInput.value = "";
-            const chatContainer = document.querySelector('.overflow-y-auto');
-            
-            // Append User Message
-            const userHtml = `<div class="flex justify-end"><div class="bg-primary-container text-on-primary-container p-4 rounded-2xl rounded-tr-none max-w-[80%] text-sm font-medium mb-4">${query}</div></div>`;
-            chatContainer.insertAdjacentHTML('beforeend', userHtml);
-            
-            // Append loading indicator
-            const loadingId = 'loading-' + Date.now();
-            const loadingHtml = `<div id="${loadingId}" class="flex justify-center mb-4"><span class="text-[10px] font-bold text-outline uppercase tracking-widest px-4 py-1 bg-surface-container-low rounded-full animate-pulse">Gemini is gathering data...</span></div>`;
-            chatContainer.insertAdjacentHTML('beforeend', loadingHtml);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-
-            try {
-                const response = await fetch('/api/ai', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ query: query })
-                });
-
-                const data = await response.json();
-                document.getElementById(loadingId)?.remove();
-
-                if (response.ok) {
-                    console.log('Gemini API Success:', data);
-                    // Append Gemini Response Structural Card (Decision Transparency - Req #1, #4)
-                    const aiHtml = `
-                    <div class="flex justify-start mb-4 w-full">
-                        <div class="bg-surface-container text-on-surface p-5 rounded-[2rem] rounded-tl-none w-full max-w-[90%] shadow-sm border border-outline-variant/10">
-                            <p class="mb-4 text-sm font-medium leading-relaxed">${data.answer || 'Response generated.'}</p>
-                            
-                            <div class="bg-white/60 p-4 rounded-xl border border-outline-variant/20 shadow-sm relative overflow-hidden">
-                                <div class="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500"></div>
-                                <div class="flex items-center gap-2 mb-3">
-                                    <span class="material-symbols-outlined text-emerald-600 text-sm">route</span>
-                                    <span class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Decision Engine Scoring</span>
-                                </div>
-                                <div class="grid grid-cols-2 gap-3 mb-3">
-                                    <div class="bg-surface p-2 rounded-lg border border-outline-variant/10 hover:shadow-md transition-shadow">
-                                        <div class="text-[10px] text-zinc-500 font-bold uppercase mb-0.5"><span class="mr-1">✅</span>Best Option</div>
-                                        <div class="font-black text-sm text-zinc-800">${data.bestOption || 'Unknown Exits'}</div>
-                                    </div>
-                                    <div class="bg-surface p-2 rounded-lg border border-outline-variant/10 hover:shadow-md transition-shadow">
-                                        <div class="text-[10px] text-zinc-500 font-bold uppercase mb-0.5"><span class="mr-1">⏱</span>ETA</div>
-                                        <div class="font-black text-sm text-zinc-800">${data.eta || 'Calculated via Maps'}</div>
-                                    </div>
-                                    <div class="bg-surface p-2 rounded-lg border border-outline-variant/10 hover:shadow-md transition-shadow">
-                                        <div class="text-[10px] text-zinc-500 font-bold uppercase mb-0.5"><span class="mr-1">📉</span>Density Level</div>
-                                        <div class="font-black text-sm text-emerald-600">Optimal (Below 30%)</div>
-                                    </div>
-                                    <div class="bg-surface p-2 rounded-lg border border-outline-variant/10 hover:shadow-md transition-shadow">
-                                        <div class="text-[10px] text-zinc-500 font-bold uppercase mb-0.5"><span class="mr-1">⚡</span>Decision Score</div>
-                                        <div class="font-black text-sm text-emerald-600">98.4/100</div>
-                                    </div>
-                                </div>
-                                <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-100/50">
-                                    <div class="text-[10px] font-bold tracking-widest uppercase text-blue-800 mb-1 flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">info</span> Why this route was chosen</div>
-                                    <p class="text-xs text-blue-900/80 leading-relaxed font-medium">${data.reason || 'This route inherently isolates the viewer from incoming general admission traffic bottlenecking the main external plaza.'}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>`;
-                    chatContainer.insertAdjacentHTML('beforeend', aiHtml);
-                } else {
-                    console.error('Gemini API Error:', data);
-                    const aiError = `<div class="flex justify-start mb-4"><div class="bg-error-container text-on-error-container p-4 rounded-2xl rounded-tl-none max-w-[80%] text-sm font-bold">Error: ${data.error}</div></div>`;
-                    chatContainer.insertAdjacentHTML('beforeend', aiError);
-                }
-            } catch (err) {
-                console.error('Fetch Error:', err);
-                document.getElementById(loadingId)?.remove();
-                const aiError = `<div class="flex justify-start mb-4"><div class="bg-error-container text-on-error-container p-4 rounded-2xl rounded-tl-none max-w-[80%] text-sm">Failed to connect to backend server.</div></div>`;
-                chatContainer.insertAdjacentHTML('beforeend', aiError);
-            }
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
-    }
-
-    // 3. Live AI Simulation Engine (Req #3, #6)
-    setInterval(() => {
-        // Toggle Sync Indicator
-        const syncInd = document.getElementById('data-sync-ind');
-        if (syncInd) syncInd.classList.toggle('opacity-50');
-
-        // Randomize Admin flow rate flickering
-        const flowEl = document.getElementById('admin-flow-rate');
-        if (flowEl) {
-            let current = parseInt(flowEl.innerText);
-            current += (Math.floor(Math.random() * 21) - 10);
-            flowEl.innerText = Math.max(0, current);
-        }
+    function triggerSmartAlert(title, message) {
+        const popup = document.getElementById('smart-alert');
+        if(!popup) return;
+        document.getElementById('smart-alert-title').innerText = title;
+        document.getElementById('smart-alert-msg').innerText = message;
         
-        // Randomize total crowd count minimally
-        const totalCrowdEl = document.getElementById('admin-total-crowd');
-        if (totalCrowdEl) {
-            let total = parseInt(totalCrowdEl.innerText.replace(/,/g, ''));
-            total += (Math.floor(Math.random() * 11) - 5);
-            totalCrowdEl.innerText = total.toLocaleString();
-        }
+        popup.classList.remove('translate-y-[-150%]', 'opacity-0');
+        popup.classList.add('translate-y-0', 'opacity-100');
+        
+        setTimeout(() => {
+            popup.classList.add('translate-y-[-150%]', 'opacity-0');
+            popup.classList.remove('translate-y-0', 'opacity-100');
+        }, 5000);
+    }
 
-        // Randomize Admin Heatmap Bars & styling colors seamlessly
+    // 2. Scenario & Emergency Controls
+    const scenarioBtns = document.querySelectorAll('.scenario-btn');
+    scenarioBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            scenarioBtns.forEach(b => {
+                b.classList.remove('bg-primary', 'shadow-lg', 'shadow-primary/20', 'scale-105', 'bg-red-600', 'shadow-red-500/20');
+                if(b.getAttribute('data-scenario') !== 'emergency') b.classList.add('bg-white/10');
+                else b.classList.add('bg-red-600/80', 'text-white');
+            });
+            
+            const scenario = btn.getAttribute('data-scenario');
+            if(scenario === 'emergency') {
+                btn.classList.add('bg-red-600', 'shadow-lg', 'shadow-red-500/20', 'scale-105');
+                btn.classList.remove('bg-red-600/80');
+            } else {
+                btn.classList.add('bg-primary', 'shadow-lg', 'shadow-primary/20', 'scale-105');
+                btn.classList.remove('bg-white/10');
+            }
+
+            simulationState.scenario = scenario;
+            
+            if (scenario === 'before') {
+                simulationState.metrics = { southStand: 40, eastStand: 50, northStand: 60, westStand: 85, gate3: 60, gate1: 95 };
+            } else if (scenario === 'during') {
+                simulationState.metrics = { southStand: 94, eastStand: 68, northStand: 32, westStand: 20, gate3: 85, gate1: 40 };
+            } else if (scenario === 'exit') {
+                simulationState.metrics = { southStand: 15, eastStand: 25, northStand: 10, westStand: 5, gate3: 98, gate1: 90 };
+                triggerSmartAlert("⚠ EXIT RUSH DETECTED", "Gates operating near maximum capacity. Routing parameters adjusted.");
+            } else if (scenario === 'emergency') {
+                simulationState.metrics = { southStand: 100, eastStand: 95, northStand: 98, westStand: 90, gate3: 100, gate1: 100 };
+                triggerSmartAlert("⚠ CRITICAL EMERGENCY SPIKE", "Emergency crowd spike detected across all sectors! AI recalculating all safe paths.");
+                setTimeout(() => {
+                    const calculateBtn = Array.from(document.querySelectorAll('button')).find(btn => btn.textContent.includes('CALCULATE FASTEST'));
+                    if(calculateBtn) calculateBtn.click();
+                }, 1500);
+            }
+            
+            updateHeatmapsVisually();
+            updatePredictionPanelVisually(scenario);
+        });
+    });
+
+    function updatePredictionPanelVisually(scenario) {
+        const panel = document.getElementById('ai-prediction-panel-content');
+        if (!panel) return;
+        
+        let html = '';
+        if (scenario === 'before') {
+            html = `
+                <div class="p-3 bg-orange-50/50 rounded-xl border border-orange-100/50">
+                    <p class="text-xs font-bold text-orange-800 mb-1">Gate 1 Entry Bottleneck</p>
+                    <p class="text-[10px] text-orange-600/80">Turnstiles at 95% capacity. Suggest routing VIPs to Gate 3.</p>
+                </div>`;
+        } else if (scenario === 'during') {
+            html = `
+                <div class="p-3 bg-orange-50/50 rounded-xl border border-orange-100/50">
+                    <p class="text-xs font-bold text-orange-800 mb-1">South Stand Congestion</p>
+                    <p class="text-[10px] text-orange-600/80">Seating at 94%. Recommend dispatching additional ushers to Zone 4.</p>
+                </div>`;
+        } else if (scenario === 'exit') {
+            html = `
+                <div class="p-3 bg-red-50/50 rounded-xl border border-red-100/50 animate-pulse">
+                    <p class="text-xs font-bold text-red-800 mb-1">CRITICAL EXIT SURGE</p>
+                    <p class="text-[10px] text-red-600/80">Gates 1 and 3 operating over capacity. Engaging structural diversions.</p>
+                </div>`;
+        } else {
+            html = `
+                <div class="p-3 bg-rose-600 rounded-xl border border-rose-800 shadow-lg shadow-rose-500/30 animate-pulse text-white">
+                    <p class="text-xs font-bold mb-1"><span class="material-symbols-outlined text-[12px] align-middle mr-1">warning</span>EMERGENCY LOCKDOWN</p>
+                    <p class="text-[10px] opacity-90">All primary exits compromised. Diverting immediately to S12 peripheral emergency egress protocols.</p>
+                </div>`;
+        }
+        panel.innerHTML = html;
+    }
+
+    function updateHeatmapsVisually() {
         const bars = document.querySelectorAll('.heatmap-bar');
         const vals = document.querySelectorAll('.heatmap-val');
         
+        const m = simulationState.metrics;
+        const targets = [m.southStand, m.eastStand, m.northStand, m.westStand];
+        
         bars.forEach((bar, index) => {
-            let match = bar.className.match(/w-\[(\d.*?)%\]/);
-            let currentWidth = match ? parseFloat(match[1]) : (parseFloat(bar.style.width) || 50);
-            let nextWidth = Math.max(10, Math.min(100, currentWidth + (Math.random() * 6 - 3)));
-            
+            let nextWidth = targets[index] + (Math.random() * 4 - 2); 
             bar.className = bar.className.replace(/w-\[\d.*?%\]/, '');
-            bar.style.width = nextWidth.toFixed(1) + '%';
+            bar.style.width = Math.min(100, Math.max(0, nextWidth)).toFixed(1) + '%';
             
             bar.classList.remove('bg-emerald-500', 'bg-yellow-500', 'bg-red-500');
             let colorClass = 'text-emerald-400';
@@ -964,11 +876,248 @@ document.addEventListener('DOMContentLoaded', () => {
                 vals[index].className = `w-12 text-right text-xs font-mono heatmap-val ${colorClass}`;
             }
         });
+        
+        // Update SVG Map Tooltips & Colors instantly
+        updateSVGMapBindings();
+    }
 
-        // Update Sync Timer Footer
+    function updateSVGMapBindings() {
+        // Map elements
+        const north = document.querySelector('div.bg-gradient-to-b.from-emerald-100');
+        const south = document.querySelector('div.bg-gradient-to-t.from-red-100');
+        const east = document.querySelector('div.bg-gradient-to-l.from-yellow-50');
+        const west = document.querySelector('div.bg-gradient-to-r.from-emerald-50');
+        
+        // We mutate their inner tooltips depending on state
+        const elements = [
+            { el: north, val: simulationState.metrics.northStand, name: "North Stand" },
+            { el: south, val: simulationState.metrics.southStand, name: "South Stand" },
+            { el: east, val: simulationState.metrics.eastStand, name: "East Stand" },
+            { el: west, val: simulationState.metrics.westStand, name: "West Stand" }
+        ];
+
+        elements.forEach(zone => {
+            if(!zone.el) return;
+            const tooltip = zone.el.querySelector('.invisible');
+            if(tooltip) {
+                tooltip.innerHTML = `
+                    <div class="font-bold text-[10px] uppercase text-zinc-800 mb-1">${zone.name}</div>
+                    <div class="text-lg font-black mb-1">${Math.round(zone.val)}% Full</div>
+                    <div class="text-[10px] font-bold ${zone.val > 80 ? 'text-red-600 bg-red-50' : zone.val > 50 ? 'text-yellow-600 bg-yellow-50' : 'text-emerald-600 bg-emerald-50'} px-2 py-1 rounded inline-block">Status: ${zone.val > 80 ? 'Red' : zone.val > 50 ? 'Medium' : 'Low'}</div>
+                `;
+            }
+            // Overwrite background gradients based on new state thresholds dynamically
+            zone.el.className = zone.el.className.replace(/bg-gradient-to-[\w]+\sfrom-[\w]+-[\d]+\sto-[\w]+-[\d]+\/[\d]+/g, '');
+            zone.el.classList.remove('bg-red-200', 'bg-emerald-200', 'bg-yellow-200');
+            
+            if(zone.val > 80) zone.el.style.backgroundColor = 'rgba(254, 202, 202, 0.9)'; // red-200
+            else if(zone.val > 50) zone.el.style.backgroundColor = 'rgba(254, 240, 138, 0.9)'; // yellow-200
+            else zone.el.style.backgroundColor = 'rgba(167, 243, 208, 0.9)'; // emerald-200
+        });
+    }
+
+    // Interactive Animated dots inside SVG
+    const svgOverlay = document.querySelector('svg.pointer-events-none.z-40');
+    if (svgOverlay) {
+        const dotPath = '<path id="crowd-path-bg" d="M 120 200 Q 250 100 400 200 T 250 350 T 120 200" fill="none" stroke="transparent"/>';
+        svgOverlay.insertAdjacentHTML('afterbegin', dotPath);
+        for(let i=0; i<8; i++) {
+            svgOverlay.insertAdjacentHTML('beforeend', `
+                <circle r="3" fill="#3b82f6" opacity="0.6">
+                    <animateMotion dur="${8 + Math.random()*5}s" repeatCount="indefinite" begin="${Math.random()*4}s">
+                        <mpath href="#crowd-path-bg"/>
+                    </animateMotion>
+                </circle>
+            `);
+        }
+    }
+
+    // 3. AI Predictive Engine & Path Calculation
+    const calculateBtn = Array.from(document.querySelectorAll('button')).find(btn => btn.textContent.includes('CALCULATE FASTEST'));
+    
+    if (calculateBtn) {
+        calculateBtn.addEventListener('click', async () => {
+            const destSelect = document.querySelector('select');
+            let destination = destSelect ? destSelect.value : "Main Exit - Gate 3";
+            const engineOutput = document.getElementById('ai-engine-output');
+            const explainToggle = document.getElementById('explain-toggle');
+            const isExplanationMode = explainToggle && explainToggle.checked;
+            
+            calculateBtn.disabled = true;
+            engineOutput.innerHTML = ''; 
+
+            // Strict User Requirements specific strings
+            const stages = [
+                { msg: "Analyzing crowd density...", time: 600 },
+                { msg: "Detecting congestion zones...", time: 500 },
+                { msg: "Evaluating alternate routes...", time: 700 },
+                { msg: "Optimizing path...", time: 400 },
+                { msg: "Final route ready", time: 300 }
+            ];
+
+            let computationHtml = `<div id="computation-steps" class="space-y-3 mb-6"></div>`;
+            engineOutput.insertAdjacentHTML('beforeend', computationHtml);
+            const stepsContainer = document.getElementById('computation-steps');
+
+            calculateBtn.innerHTML = `<span class="material-symbols-outlined animate-spin align-middle mr-2 mt-[-3px]">sync</span>Processing...`;
+
+            for (let i = 0; i < stages.length; i++) {
+                await new Promise(r => setTimeout(r, stages[i].time));
+                stepsContainer.insertAdjacentHTML('beforeend', `
+                    <div class="flex items-center gap-2 text-sm font-medium text-on-surface-variant animate-pulse shimmer-text">
+                        <span class="material-symbols-outlined ${i===stages.length-1 ? 'text-primary' : 'text-emerald-500'} text-lg">check_circle</span>
+                        ${stages[i].msg}
+                    </div>
+                `);
+                engineOutput.scrollTop = engineOutput.scrollHeight;
+            }
+
+            document.querySelectorAll('#computation-steps > div').forEach(el => el.classList.remove('animate-pulse'));
+            await new Promise(r => setTimeout(r, 400));
+
+            // Engine Decision Logic
+            let aiDecision = {
+                bestOption: "Peripheral Ramp 4",
+                eta: "4 mins",
+                density: "Optimal (< 30%)",
+                densityClass: "text-emerald-600",
+                timeSaved: "14 mins",
+                score: (85 + Math.random() * 10).toFixed(1),
+                reason: "Bypasses the localized bottleneck caused by spectator overflow."
+            };
+
+            // Explanation Mode Texts required by user
+            let explainSouth = simulationState.metrics.southStand;
+            let explainOutput = [
+                `South Stand is ${explainSouth}% congested`,
+                `East exit has lower density`,
+                `Selected route reduces wait time by 14 minutes`
+            ];
+
+            if (simulationState.scenario === 'emergency') {
+                aiDecision.bestOption = "EMERGENCY ROUTE S12";
+                aiDecision.reason = "CRITICAL EMERGENCY. AI has bypassed all standard paths and directed you to immediate exterior egress S12.";
+                aiDecision.timeSaved = "LIFE CRITICAL";
+                aiDecision.density = "DANGER";
+                aiDecision.densityClass = "text-red-600";
+                destination = "Emergency Exit S12"; // Force path visually
+                
+                explainOutput = [
+                    "EMERGENCY SPIKE OVERRIDE TRIGGERED",
+                    "All concourses rejected due to unsafe compression.",
+                    "Routing to nearest absolute perimeter breach."
+                ];
+            } else if (destination.includes("Gate 3")) {
+                if (simulationState.metrics.gate3 > 80) {
+                    aiDecision.bestOption = "Alternate route via Gate 5";
+                    aiDecision.reason = "Gate 3 congestion is exceptionally high. Rerouting flow away from main turnstiles.";
+                    aiDecision.timeSaved = "22 mins";
+                    aiDecision.density = "Medium (60%)";
+                    aiDecision.densityClass = "text-yellow-600";
+                    triggerSmartAlert("⚠ Gate 3 congestion high", "AI suggests alternate route via Gate 5.");
+                } else {
+                    aiDecision.bestOption = "Gate 3 Direct Route";
+                    aiDecision.reason = "Gate 3 flow rate is nominal. Proceed via normal concourse access.";
+                    aiDecision.timeSaved = "2 mins";
+                }
+            }
+
+            // SVG Route Update
+            const routeDash = document.getElementById('route-dash');
+            const routeGlow = document.getElementById('route-glow');
+            if (routeDash && routeGlow && mapPaths[destination]) {
+                routeDash.setAttribute('d', mapPaths[destination]);
+                routeGlow.setAttribute('d', mapPaths[destination]);
+                
+                let strokeColor = '#1d4ed8'; // Blue safe
+                let glowColor = '#60a5fa';
+                if(simulationState.scenario === 'emergency') {
+                    strokeColor = '#b91c1c'; glowColor = '#ef4444'; 
+                } else if (aiDecision.densityClass.includes('yellow')) {
+                    strokeColor = '#ca8a04'; glowColor = '#facc15';
+                }
+                routeDash.setAttribute('stroke', strokeColor);
+                routeGlow.setAttribute('stroke', glowColor);
+            }
+
+            // Explanation Mode Blocks
+            let explanationHtml = '';
+            if (isExplanationMode) {
+                explanationHtml = `
+                <div class="mt-4 p-4 border border-zinc-200 bg-zinc-50 rounded-xl text-left border-l-4 border-l-primary">
+                    <div class="text-[10px] font-black uppercase tracking-widest text-primary mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-sm">psychology</span> Explicit Logic Trace</div>
+                    <ul class="text-xs space-y-2 text-zinc-600 font-mono tracking-tight leading-relaxed">
+                        ${explainOutput.map(t => '<li>> ' + t + '</li>').join('')}
+                    </ul>
+                </div>`;
+            }
+
+            // Standard Premium Card with shimmer
+            const finalCard = `
+            <div class="relative bg-white p-5 rounded-[2xl] shadow-md border border-outline-variant/20 overflow-hidden animate-[fade-in_0.5s_ease-out]">
+                <div class="absolute inset-0 animate-shimmer pointer-events-none opacity-30"></div>
+                <div class="absolute left-0 top-0 bottom-0 w-1 ${simulationState.scenario === 'emergency' ? 'bg-red-500' : 'bg-emerald-500'}"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="material-symbols-outlined ${simulationState.scenario === 'emergency' ? 'text-red-600' : 'text-emerald-600'} text-lg">route</span>
+                        <span class="text-sm font-black uppercase tracking-widest text-on-surface">Path Calculated</span>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        <div class="bg-surface p-3 rounded-xl border border-outline-variant/10">
+                            <div class="text-[10px] text-zinc-500 font-bold uppercase mb-1">Recommended Path</div>
+                            <div class="font-black text-sm text-zinc-800 leading-tight">${aiDecision.bestOption}</div>
+                        </div>
+                        <div class="bg-surface p-3 rounded-xl border border-outline-variant/10">
+                            <div class="text-[10px] text-zinc-500 font-bold uppercase mb-1">ETA</div>
+                            <div class="font-black text-xl text-zinc-800">${aiDecision.eta}</div>
+                        </div>
+                        <div class="bg-surface p-3 rounded-xl border border-outline-variant/10">
+                            <div class="text-[10px] text-zinc-500 font-bold uppercase mb-1">Route Status</div>
+                            <div class="font-black text-sm ${aiDecision.densityClass}">${aiDecision.density}</div>
+                        </div>
+                         <div class="bg-primary-fixed/20 p-3 rounded-xl border border-primary-fixed">
+                            <div class="text-[10px] text-on-primary-fixed-variant font-bold uppercase mb-1">Time Saved</div>
+                            <div class="font-black text-xl text-on-primary-fixed-variant">${aiDecision.timeSaved}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50/50 p-3 rounded-xl border border-blue-100/50">
+                        <div class="text-[10px] font-bold tracking-widest uppercase text-blue-800 mb-1 flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">info</span> Reason for Reroute</div>
+                        <p class="text-xs text-blue-900/80 leading-relaxed font-medium">${aiDecision.reason}</p>
+                    </div>
+                    
+                    ${explanationHtml}
+                </div>
+            </div>
+            `;
+            
+            stepsContainer.insertAdjacentHTML('afterend', finalCard);
+            engineOutput.scrollTop = engineOutput.scrollHeight;
+
+            calculateBtn.innerHTML = 'CALCULATE FASTEST PATH';
+            calculateBtn.disabled = false;
+        });
+    }
+
+    // 4. Live Intervals
+    setInterval(() => {
+        const syncInd = document.getElementById('data-sync-ind');
+        if (syncInd) syncInd.classList.toggle('opacity-50');
+
+        const totalCrowdEl = document.getElementById('admin-total-crowd');
+        if (totalCrowdEl) {
+            let total = parseInt(totalCrowdEl.innerText.replace(/,/g, ''));
+            total += (Math.floor(Math.random() * 11) - 5);
+            totalCrowdEl.innerText = total.toLocaleString();
+        }
+
+        updateHeatmapsVisually();
+
         const syncTimeEl = document.getElementById('sys-sync-time');
         if (syncTimeEl) syncTimeEl.innerText = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'});
-    }, 4500);
+    }, 3000);
+    
+    updateHeatmapsVisually();
 });
 </script>
-</body></html>
