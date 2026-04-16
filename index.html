@@ -792,7 +792,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     toCoords: { lat: 23.0930, lng: 72.5980 }
                 };
 
-                const response = await fetch('http://localhost:5000/api/route', {
+                const response = await fetch('/api/route', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
@@ -855,7 +855,7 @@ document.addEventListener('DOMContentLoaded', () => {
             chatContainer.scrollTop = chatContainer.scrollHeight;
 
             try {
-                const response = await fetch('http://localhost:5000/api/ai', {
+                const response = await fetch('/api/ai', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ query: query })
